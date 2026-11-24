@@ -1,40 +1,18 @@
-Find the cheapest path
+Create two functions to encode and then decode a string using the Rail Fence Cipher. This cipher is used to encode a string by placing each character successively in a diagonal along a set of "rails". First start off moving diagonally and down. When you reach the bottom, reverse direction and move diagonally and up until you reach the top rail. Continue until you reach the end of the string. Each "rail" is then read left to right to derive the encoded string.
 
-You should be familiar with the "Find the shortest path" problem. But what if moving to a neighboring coordinate counted not as 1 step but as N *steps? *
+For example, the string "WEAREDISCOVEREDFLEEATONCE" could be represented in a three rail system as follows:
 
-INSTRUCTIONS
+W       E       C       R       L       T       E
+  E   R   D   S   O   E   E   F   E   A   O   C  
+    A       I       V       D       E       N    
+The encoded string would be:
 
-Your task is to find the path through the field which has the lowest cost to go through.
+WECRLTEERDSOEEFEAOCAIVDEN
+Write a function/method that takes 2 arguments, a string and the number of rails, and returns the ENCODED string.
 
-As input you will receive:
+Write a second function/method that takes 2 arguments, an encoded string and the number of rails, and returns the DECODED string.
 
-a toll_map matrix (as variable t) which holds data about how expensive it is to go through the given field coordinates
-a start coordinate (tuple) which holds information about your starting position
-a finish coordinate (tuple) which holds information about the position you have to get to
-As output you should return:
+For both encoding and decoding, assume number of rails >= 2 and that passing an empty string will return an empty string.
 
-the directions list
-EXAMPLE
+Note that the example above excludes the punctuation and spaces just for simplicity. There are, however, tests that include punctuation. Don't filter out punctuation as they are a part of the string.
 
-INPUT:
-
-toll_map  |  start  |  finish
-          |         |
-[         |         |
- [1,9,1], |  (0,0)  |  (0,2)
- [2,9,1], |         |
- [2,1,1], |         |
-]         |         |
-
-
-
-OUTPUT:
-
-["down", "down", "right", "right", "up", "up"]
-CLARIFICATIONS
-
-the start and finish tuples represent (row, col) indices
-the total cost is increased after leaving the matrix coordinate, not entering it
-the field will be rectangular, not necessarily a square
-the field will always be of correct shape
-the actual tests will check total_cost based on your returned directions list, not the directions themselves, so you shouldn't worry about having multiple possible solutions
